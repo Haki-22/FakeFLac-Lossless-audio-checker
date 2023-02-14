@@ -68,3 +68,9 @@ Refer to google for more info or look here: https://erikstechcorner.com/2020/09/
 - Basic GUI
 - Icons are neeed, pictures of examples are optional
 - Sometimes lags when opeing audio file
+
+## Next dev
+
+- Multiprocessing
+- limit global variables
+- Smooth code
