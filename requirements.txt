@@ -1,0 +1,5 @@
+kivy
+pydub 
+scipy 
+numpy 
+matplotlib
