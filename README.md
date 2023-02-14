@@ -34,7 +34,9 @@ pip install kivy pydub scipy numpy matplotlib
 ```
 ## How to spot fake lossless compression
 There is no absolute way to do this without the original audio file.
+
 One way to get closer to the answer is to look at your file, its fake lossless spectogram and compare those two.
+
 Other apps i've come accross usually dont work. (Tried with my own fake lossless audio files that I've created for that purpose)
 Refer to google for more info or look here: https://erikstechcorner.com/2020/09/how-to-check-if-your-flac-files-are-really-lossless/
 
@@ -44,19 +46,19 @@ Refer to google for more info or look here: https://erikstechcorner.com/2020/09/
 
 1. Choose your adio file (works for mono and stereo now) and look at spectograms
 
-[2]. By checking "limit to 45s" you will speed up the calculation but your data will be limited to 45 seconds.
+- [2]. By checking "limit to 45s" you will speed up the calculation but your data will be limited to 45 seconds.
 
 3. See the difference
 
-In lossy audio files you can spot the cuttoff (for different bitrates different kHz)
+- In lossy audio files you can spot the cuttoff (for different bitrates different kHz)
 
-If the cutoff frequency of your audio file matches its fake lossless compression you are probably dealing with a fake lossless compression
+- If the cutoff frequency of your audio file matches its fake lossless compression you are probably dealing with a fake lossless compression
 
-The program also calculates the most used highest frequency and displays it as a number. lossless audio file should have higher number.
+- The program also calculates the most used highest frequency and displays it as a number. lossless audio file should have higher number.
 
 [4]. By playbuttons you can play your song and its fake lossless version (If you've chosen different bitrate you can play that). 
 
-Also their difference (note that it might not be that accurate).
+- Also their difference (note that it might not be that accurate).
 
 [5]. If you have found a fake you can save the lossy file to save some space.
 
