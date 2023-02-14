@@ -66,5 +66,5 @@ Refer to google for more info or look here: https://erikstechcorner.com/2020/09/
 
 - Tested only on my machine
 - Basic GUI
+- Icons are neeed, pictures of examples are optional
 - Sometimes lags when opeing audio file
-- To display examples you need pictures attached to this repository
