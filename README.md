@@ -7,14 +7,20 @@ Keep in mind that what you hear should be the number one priority when dealing w
 ## Contains options for:
 
 Plotting spectogram of selected audio file and its lossy compression.
+
 Playing selected audio, its lossy compression and their difference (+- what is missing with lossy compression) through default media browser.
+
 Save the lossy compression if needed. 
+
 Also can convert audio into mp3 with different bitrates
+
 Plotting a single spectogram for one audio file
+
 Help -> How to spot fake "lossless" compression
 
 ## Requirements
 python
+
 Installation of following libraries:
 - Kivy
 - pydub
