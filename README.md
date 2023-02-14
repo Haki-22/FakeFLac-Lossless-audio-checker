@@ -1,6 +1,6 @@
 # FakeFLac (Lossless audio checker)
 
-GUI app used to spot fake lossless audio files through use of spectograms made in python.
+Python GUI app used to spot fake lossless audio files through use of spectograms.
 
 Keep in mind that what you hear should be the number one priority when dealing with audio files.
 
