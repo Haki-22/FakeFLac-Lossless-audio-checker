@@ -23,8 +23,7 @@ python
 
 Installation of following libraries:
 - Kivy
-- pydub
--- pydub requires ffmpeg for that please visti: https://ffmpeg.org/download.html
+- pydub - pydub requires ffmpeg for that please visti: https://ffmpeg.org/download.html
 - scipy
 - numpy
 - matplotlib
