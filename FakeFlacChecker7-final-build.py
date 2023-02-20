@@ -292,22 +292,22 @@ class MyGridLayout(GridLayout):
         #self.insideleft.add_widget(self.only_max_freq_button)
 
         #Play High res audio:
-        self.playbutton = Button(background_normal='icons8-play-button-circled-100.png', size_hint=(None, None), pos_hint={'x': 0, 'y': .8})
+        self.playbutton = Button(background_normal='Icons-and-pictures/icons8-play-button-circled-100.png', size_hint=(None, None), pos_hint={'x': 0, 'y': .8})
         self.playbutton.bind(on_press=self.play_song)
         self.audio_label = Label(text="Your audio file:", size_hint=(None, None), pos_hint={'x': 0.3, 'y': 0.8})
         
 
         #Play Fake high res audio:    (image from https://icons8.com/icon/YJ5CCqdcOBs2/play-button-circled)
-        self.playbutton_fake = Button(background_normal='icons8-play-button-circled-100.png', size_hint=(None, None), pos_hint={'x': 0, 'y': .8},)
+        self.playbutton_fake = Button(background_normal='Icons-and-pictures/icons8-play-button-circled-100.png', size_hint=(None, None), pos_hint={'x': 0, 'y': .8},)
         self.playbutton_fake.bind(on_press=self.play_fake_song)
         self.audio_label_fake = Label(text="Converted file:", size_hint=(None, None), pos_hint={'x': 0.2, 'y': 0.8})
 
         #Save icon for low-quality audio
-        self.save_icon = Button(background_normal='icons8-save-90.png', size_hint=(None, None), pos_hint={'x': 0.5, 'y': .8})
+        self.save_icon = Button(background_normal='Icons-and-pictures/icons8-save-90.png', size_hint=(None, None), pos_hint={'x': 0.5, 'y': .8})
         self.save_icon.bind(on_press=self.save_mp3)
 
         #Play difference between high and low quality aduio:
-        self.play_difference_button = Button(background_normal='icons8-play-button-circled-100.png', size_hint=(None, None), pos_hint={'x': 0, 'y': .1},)
+        self.play_difference_button = Button(background_normal='Icons-and-pictures/icons8-play-button-circled-100.png', size_hint=(None, None), pos_hint={'x': 0, 'y': .1},)
         self.play_difference_button.bind(on_press=self.play_difference)
         self.play_difference_label = Label(text="Play the differnce between High-Low res audio:", size_hint=(None, None), pos_hint={'x': .4, 'y': .1})
 
@@ -615,11 +615,11 @@ class MyGridLayout(GridLayout):
         self.insidecenter.clear_widgets()
         self.insideright.clear_widgets()
         self.insidecenter.add_widget(Label(text="Example of lossless audio: (Up to 22KHz)", pos_hint={'x':0, 'y':.8}, size_hint=(1,.1)))
-        lossless = Image(source="Lossless-audio-example.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
+        lossless = Image(source="Icons-and-pictures/Lossless-audio-example.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
         self.insidecenter.add_widget(lossless)
 
         self.insideright.add_widget(Label(text="Example of lossy compression (196k) (Up to 19KHz):", pos_hint={'x':0, 'y':.8}, size_hint=(1,.1)))
-        lossy = Image(source="Lossy-audio-example.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
+        lossy = Image(source="Icons-and-pictures/Lossy-audio-example.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
         self.insideright.add_widget(lossy)
 
         example_button = Button(text="Show me example of lossles audio check (Real flac)", pos_hint={'x':0.1, 'y':.1}, size_hint=(.8,.1))
@@ -634,10 +634,10 @@ class MyGridLayout(GridLayout):
         self.insidecenter.clear_widgets()
         self.insideright.clear_widgets()
         self.insidecenter.add_widget(Label(text="Example of lossless audio check:", pos_hint={'x':0.5, 'y':.8}, size_hint=(1,.1)))
-        lossless = Image(source="Lossless-audio-example1split1.png", pos_hint={'x':0, 'y':.0}, size_hint=(1, 1))
+        lossless = Image(source="Icons-and-pictures/Lossless-audio-example1split1.png", pos_hint={'x':0, 'y':.0}, size_hint=(1, 1))
         self.insidecenter.add_widget(lossless)
 
-        lossy = Image(source="Lossless-audio-example1split2.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
+        lossy = Image(source="Icons-and-pictures/Lossless-audio-example1split2.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
         self.insideright.add_widget(lossy)
 
         example_button = Button(text="Back", pos_hint={'x':0.8, 'y':0}, size_hint=(.4,.1))
@@ -648,10 +648,10 @@ class MyGridLayout(GridLayout):
         self.insidecenter.clear_widgets()
         self.insideright.clear_widgets()
         self.insidecenter.add_widget(Label(text="Example of lossy (fake flac)audio check:", pos_hint={'x':0.5, 'y':.8}, size_hint=(1,.1)))
-        lossless = Image(source="Lossy-audio-example1split1.png", pos_hint={'x':0, 'y':.0}, size_hint=(1, 1))
+        lossless = Image(source="Icons-and-pictures/Lossy-audio-example1split1.png", pos_hint={'x':0, 'y':.0}, size_hint=(1, 1))
         self.insidecenter.add_widget(lossless)
 
-        lossy = Image(source="Lossy-audio-example1split2.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
+        lossy = Image(source="Icons-and-pictures/Lossy-audio-example1split2.png", pos_hint={'x':0, 'y':0}, size_hint=(1, 1))
         self.insideright.add_widget(lossy)
 
         example_button = Button(text="Back", pos_hint={'x':0.8, 'y':0}, size_hint=(.4,.1))
