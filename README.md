@@ -74,3 +74,4 @@ Refer to google for more info or look here: https://erikstechcorner.com/2020/09/
 - Multiprocessing
 - limit global variables
 - Smooth code
+- Clear widgets func
