@@ -53,7 +53,15 @@ def is_wav_to_memory(file_name: str, mp3_and_back: bool, bitrate:str, limit_to_4
         takes only 45seconds of audio file
     save_mp3 : bool 
         True saves the mp3 as temp
+        
+    Returns
+    -------
+    Fs : int
+        Number of samples per second. (common sampling rate for audio signals is 44100 Hz)
+    aud : NumPy array
+        Contains the audio data
     """
+    
     global temp_file_path
     def convert_to_memory(file_name):    
         """ Opens selected audio, if needed covnerts to wav in memory. """
