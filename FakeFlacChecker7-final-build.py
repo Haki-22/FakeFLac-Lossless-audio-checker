@@ -38,10 +38,25 @@ import webbrowser
 
 #from memory_profiler import profile     (To see memory consumption)
 
+def is_wav_to_memory(file_name: str, mp3_and_back: bool, bitrate:str, limit_to_45sec:bool, save_mp3:bool):
+    """ Opens selected audio, if needed covnerts to wav in memory.
 
-def is_wav_to_memory(file_name, mp3_and_back, limit_to_45sec, bitrate, save_mp3):
+    Parameters
+    ----------
+    file_name : str
+        Name of audio file
+    mp3_and_back : bool
+        True converts the audio to mp3 (to selected bitrate) and then to wav (fake lossless version)
+    bitrate: str
+        sets destination bitrate
+    limit_to_45sec : bool
+        takes only 45seconds of audio file
+    save_mp3 : bool 
+        True saves the mp3 as temp
+    """
     global temp_file_path
     def convert_to_memory(file_name):    
+        """ Opens selected audio, if needed covnerts to wav in memory. """
         if file_name.endswith(".wav"):
             with open(file_name, "rb") as f:
                 return f.read()
@@ -52,7 +67,8 @@ def is_wav_to_memory(file_name, mp3_and_back, limit_to_45sec, bitrate, save_mp3)
                 f.seek(0)
                 return f.read()
 
-    def convert_to_memory_45s(file_name):    
+    def convert_to_memory_45s(file_name):   
+        """ Opens 45 seconds of selected audio, if needed covnerts to wav in memory. """ 
         if file_name.endswith(".wav"):
             audio = AudioSegment.from_file(file_name, format="wav")[:45000]
             with io.BytesIO() as f:
@@ -74,6 +90,8 @@ def is_wav_to_memory(file_name, mp3_and_back, limit_to_45sec, bitrate, save_mp3)
     if mp3_and_back:
         
         def convert_to_mp3(aud_data):
+            """ converts the audio to mp3 (to selected bitrate) and then to wav (fake lossless version) """
+            
             audio = AudioSegment.from_file(io.BytesIO(aud_data), format="wav")
             with io.BytesIO() as f:
                 audio.export(f, format="mp3", bitrate=bitrate)
@@ -109,7 +127,14 @@ def is_wav_to_memory(file_name, mp3_and_back, limit_to_45sec, bitrate, save_mp3)
 
     return  Fs, aud
 
-def play_audio_by_default_browser(file_path):
+def play_audio_by_default_browser(file_path: str):
+    """ Opens default media browser for selected audio, if it fails opens in web browser 
+    
+    Parameters
+    ----------
+    file_path : str
+        Name of audio file
+    """
     operating_system = platform.system()
     success = False
     if operating_system == "Windows":
@@ -133,7 +158,16 @@ def play_audio_by_default_browser(file_path):
     if not success:
         webbrowser.open(file_path)
 
-def difference_between_audio_files(file_name, limt_to_45_sec):
+def difference_between_audio_files(file_name:str, limt_to_45_sec:bool):
+    """ Takes audio file and its lossy conversion and combines them, combined result saves as temp file 
+    
+    Parameters
+    ----------
+    file_name : str
+        Name of audio file
+    limt_to_45_sec: bool
+        True takes only 45s of audio
+        """
     global temp_file_path
 
     print(temp_file_path)
@@ -185,6 +219,7 @@ def difference_between_audio_files(file_name, limt_to_45_sec):
 
 
 class MyGridLayout(GridLayout):
+    """ Devides GUI layout into 3 separate collumns and initializes widgets"""
     def __init__(self, **kwargs):
         super(MyGridLayout, self).__init__(**kwargs)
         self.cols=3
@@ -281,9 +316,11 @@ class MyGridLayout(GridLayout):
         self.add_widget(self.insideright)
     
     def update_doing_text(self, instance):
+        """ updates doing text (self.doing_text needs to be changed before calling) """
         self.doing_label.text=str(self.doing_text)
 
     def play_difference(self, instance):
+        """ Calls function to calculate difference between audio files and then plays it by default browser """
         self.doing_text = "Opening the difference audio, please wait"
         self.update_doing_text(self.doing_text)
         
@@ -298,7 +335,7 @@ class MyGridLayout(GridLayout):
         Clock.schedule_once(calculation_callback, 0)
         
     def update_selected_bitrate(self, instance, value):
-        #print("Selected Bitrate:", self.bitrate)
+        """ Updates bitrate if new is selected """
         if value:
             self.bitrate = value
             if self.bitrate == "320k":
@@ -309,6 +346,7 @@ class MyGridLayout(GridLayout):
                 self.update_doing_text(self.doing_text)
 
     def play_song(self, instance):
+        """Button function=  Plays selected audio """
         if self.file_name != "":
             self.doing_text = "Opening original audio"
             self.update_doing_text(self.doing_text)
@@ -320,6 +358,7 @@ class MyGridLayout(GridLayout):
             
 
     def update_limit_to_45_variable(self, checkbox, value):
+        """Checkbox func = Updates limit_to_45 var to True or False"""
         self.limit_to_45_variable = value
         if value:
             self.doing_text = "Limiting audio to 45seconds"
@@ -329,6 +368,7 @@ class MyGridLayout(GridLayout):
             self.update_doing_text(self.doing_text)
 
     def play_fake_song(self, instance):
+        """Button func = plays the fake lossless version of audio """
         global temp_file_path
         print(temp_file_path)
         if temp_file_path != "":
@@ -342,6 +382,7 @@ class MyGridLayout(GridLayout):
            
 
     def save_mp3(self, instance):
+        """ Button func = saves the lossy audio file """
         def save_mp3(temp_file_path):
             self.doing_text = "Saving lower-quiality audio"
             self.update_doing_text(self.doing_text)
@@ -366,6 +407,7 @@ class MyGridLayout(GridLayout):
         save_mp3(temp_file_path)
         
     def ChooseSong(self, instance):
+        """ Button func= takes original audio, converts it into fake lossy version and spectograms """
         global temp_file_path, temp_file_path_of_difference
         root = tk.Tk()
         root.withdraw()
@@ -423,8 +465,9 @@ class MyGridLayout(GridLayout):
 
     #@profile
     def load_spectogram_high(self, file_name):
+        """Calculates the spectogram of selected audio in memory and then displays it, calculates most highest frequencies from 14000freq """
         #Load audio to memory:
-        Fs, aud = is_wav_to_memory(file_name, False, self.limit_to_45_variable, self.bitrate, False)
+        Fs, aud = is_wav_to_memory(file_name, False, self.bitrate, self.limit_to_45_variable, False)
         
         #Plot spectogram:
         powerSpectrum, frequenciesFound, time, imageAxis = plt.specgram(aud, Fs=Fs, cmap='nipy_spectral')    #'hot'    #
@@ -466,6 +509,7 @@ class MyGridLayout(GridLayout):
         self.widgetje = True
 
     def load_spectogram_low(self, file_name):
+        """Calculates the spectogram of fake lossless audio in memory and then displays it, calculates most highest frequencies from 14000freq """
         #Show most used highest frequencies:
         def show_highest_freq(powerSpectrum, frequenciesFound, frequency_range_from):
             n_frequencies, n_times = powerSpectrum.shape
@@ -478,7 +522,7 @@ class MyGridLayout(GridLayout):
             self.insideright.add_widget(self.max_freq_label_fake)
 
         #Load audio data to memory:
-        Fs, aud = is_wav_to_memory(file_name, True, self.limit_to_45_variable, self.bitrate, True)
+        Fs, aud = is_wav_to_memory(file_name, True, self.bitrate, self.limit_to_45_variable, True)
 
         #Plot spectogram and save it to memory: 
         powerSpectrum, frequenciesFound, time, imageAxis =  plt.specgram(aud, Fs=Fs, cmap='nipy_spectral')    #'hot'  #
@@ -522,6 +566,7 @@ class MyGridLayout(GridLayout):
         buf.truncate(0)
 
     def only_max_freq(self, instance):
+        """ Takes audio files from a folder and passes it one by one to only_max_frequencies_value """
         root = tk.Tk()
         root.withdraw()
 
@@ -538,7 +583,8 @@ class MyGridLayout(GridLayout):
                 self.only_max_frequencies_value(file_name)
 
     def only_max_frequencies_value(self, file_name):
-        Fs, aud = is_wav_to_memory(file_name, False, self.limit_to_45_variable, self.bitrate, False)
+        """ Calculates only the highest frequencies  (>14Khz) and prints to console """
+        Fs, aud = is_wav_to_memory(file_name, False, self.bitrate, self.limit_to_45_variable, False)
 
         #Plot spectogram and save it to memory: 
         powerSpectrum, frequenciesFound, time, imageAxis = plt.specgram(aud, Fs=Fs)    #'hot'  #
@@ -551,7 +597,7 @@ class MyGridLayout(GridLayout):
 
         print("Max frequency of original file", os.path.basename(file_name), ":", max(max_frequencies) + 14000)
 
-        Fs, aud = is_wav_to_memory(file_name, True, self.limit_to_45_variable, self.bitrate, False)
+        Fs, aud = is_wav_to_memory(file_name, True, self.bitrate, self.limit_to_45_variable, False)
 
         #Plot spectogram and save it to memory: 
         powerSpectrum, frequenciesFound, time, imageAxis = plt.specgram(aud, Fs=Fs)    #'hot'  #
@@ -565,6 +611,7 @@ class MyGridLayout(GridLayout):
         print("Max frequency of its fake lossles compresion", os.path.basename(file_name), ":", max(max_frequencies) + 14000)
 
     def show_difference(self, instance):
+        
         self.insidecenter.clear_widgets()
         self.insideright.clear_widgets()
         self.insidecenter.add_widget(Label(text="Example of lossless audio: (Up to 22KHz)", pos_hint={'x':0, 'y':.8}, size_hint=(1,.1)))
@@ -627,7 +674,7 @@ class MyGridLayout(GridLayout):
             Clock.schedule_once(calculation_callback, 0)
 
     def only_spectogram(self, file_name):
-        Fs, aud = is_wav_to_memory(file_name, False, False, self.bitrate, False)
+        Fs, aud = is_wav_to_memory(file_name, False, self.bitrate, False, False)
 
         plt.specgram(aud, Fs=Fs, cmap='nipy_spectral')    #'hot'    #powerSpectrum, frequenciesFound, time, imageAxis =
         plt.title(os.path.basename(file_name))
