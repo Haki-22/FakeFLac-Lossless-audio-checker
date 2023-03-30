@@ -23,7 +23,7 @@ python
 
 Installation of following libraries:
 - Kivy
-- pydub - pydub requires ffmpeg for that please visti: https://ffmpeg.org/download.html
+- pydub
 - scipy
 - numpy
 - matplotlib
@@ -32,6 +32,8 @@ Can be done by
 ```bash
 pip install kivy pydub scipy numpy matplotlib
 ```
+and installation of [ffmepg](https://ffmpeg.org)
+
 ## How to spot fake lossless compression
 There is no absolute way to do this without the original audio file.
 
