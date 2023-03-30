@@ -18,6 +18,9 @@ Keep in mind that what you hear should be the number one priority when dealing w
 
 6. Help -> How to spot fake "lossless" compression
 
+## Easy use
+Download release, find exe. Enjoy.
+
 ## Requirements
 python
 
