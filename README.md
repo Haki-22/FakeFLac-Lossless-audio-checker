@@ -19,7 +19,7 @@ Keep in mind that what you hear should be the number one priority when dealing w
 6. Help -> How to spot fake "lossless" compression
 
 ## Easy use
-Download release, find exe. Enjoy.
+Download [release](https://github.com/Haki-22/FakeFLac-Lossless-audio-checker/releases/download/1.0.0/FakeFlacChecker.zip), find exe. Enjoy.
 
 ## Requirements
 python
