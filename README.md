@@ -38,7 +38,7 @@ There is no absolute way to do this without the original audio file.
 One way to get closer to the answer is to look at your file, its fake lossless spectogram and compare those two.
 
 Other apps i've come accross usually dont work. (Tried with my own fake lossless audio files that I've created for that purpose)
-Refer to google for more info or look here: https://erikstechcorner.com/2020/09/how-to-check-if-your-flac-files-are-really-lossless/
+Refer to google for more info or look [here](https://erikstechcorner.com/2020/09/how-to-check-if-your-flac-files-are-really-lossless/)
 
 ## Usage
 
