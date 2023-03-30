@@ -32,6 +32,8 @@ Can be done by
 ```bash
 pip install kivy pydub scipy numpy matplotlib
 ```
+- and [ffmpeg](http://www.ffmpeg.org/
+
 ## How to spot fake lossless compression
 There is no absolute way to do this without the original audio file.
 
