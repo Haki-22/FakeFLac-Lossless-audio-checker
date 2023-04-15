@@ -69,7 +69,6 @@ Refer to google for more info or look [here](https://erikstechcorner.com/2020/09
 
 ## Limitations
 
-- Tested only on my machine
 - Basic GUI
 - Icons are neeed, pictures of examples are optional
 - Sometimes lags when opeing audio file
@@ -78,5 +77,3 @@ Refer to google for more info or look [here](https://erikstechcorner.com/2020/09
 
 - Multiprocessing
 - limit global variables
-- Smooth code
-- Clear widgets func
